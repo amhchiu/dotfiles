@@ -2,7 +2,7 @@
 " Must be first, as it changes other options as side effect
 set nocompatible
 
-" ================ General Config ===================={{{
+" ================ General Config ==================== {{{
 
 set number                      "Line numbers are good
 set backspace=indent,eol,start  "Allow backspace in insert mode
@@ -18,9 +18,17 @@ if !exists("g:syntax_on")
     syntax enable
 endif
 
-set foldmethod=marker			"Fold with marker ({{{}}})
+set foldmethod=marker			"Fold with marker
+set mouse=a
 
-}}}
+" Mouse wheel scrolling enabled
+if has("mouse_sgr")
+    set ttymouse=sgr
+else
+    set ttymouse=xterm2
+end
+
+" }}}
 
 " ================ Indentation ===================={{{
 
@@ -30,7 +38,7 @@ set shiftwidth=4				"4 spaces auto indent
 set softtabstop=4				"4 spaces for a tab
 set expandtab					"expand tab button to spaces
 
-}}}
+" }}}
 
 " ================ Search ===================={{{
 
@@ -39,7 +47,7 @@ set hlsearch
 set ignorecase
 set smartcase
 
-}}}
+" }}}
 
 " ================ Neomake ===================={{{
 
@@ -50,5 +58,6 @@ let g:neomake_javascript_jshint_maker = {
 let g:neomake_javascript_enabled_makers = ['jshint']	"javascript uses jshint library
 autocmd! BufWritePost,BufEnter *.js Neomake 			"Only use above for .js files. 
 
-}}}
+" }}}
+
 
