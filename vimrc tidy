@@ -1,0 +1,54 @@
+" Use Vim settings, rather than Vi settings (Much Better!).
+" Must be first, as it changes other options as side effect
+set nocompatible
+
+" ================ General Config ===================={{{
+
+set number                      "Line numbers are good
+set backspace=indent,eol,start  "Allow backspace in insert mode
+set history=100                "Store lots of :cmdline history
+set showcmd                     "Show incomplete cmds down the bottom
+set visualbell					"No sounds
+
+" c-x c-x autocomplete
+set omnifunc=syntaxcomplete#Complete
+
+" Syntax highlighting ON
+if !exists("g:syntax_on")
+    syntax enable
+endif
+
+set foldmethod=marker			"Fold with marker ({{{}}})
+
+}}}
+
+" ================ Indentation ===================={{{
+
+filetype plugin indent on
+set tabstop=4					"tab 4 spaces width
+set shiftwidth=4				"4 spaces auto indent
+set softtabstop=4				"4 spaces for a tab
+set expandtab					"expand tab button to spaces
+
+}}}
+
+" ================ Search ===================={{{
+
+set incsearch
+set hlsearch
+set ignorecase
+set smartcase
+
+}}}
+
+" ================ Neomake ===================={{{
+
+let g:neomake_javascript_jshint_maker = {
+    \ 'args': ['--verbose'],
+    \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
+    \ }
+let g:neomake_javascript_enabled_makers = ['jshint']	"javascript uses jshint library
+autocmd! BufWritePost,BufEnter *.js Neomake 			"Only use above for .js files. 
+
+}}}
+
