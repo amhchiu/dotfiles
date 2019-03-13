@@ -6,17 +6,21 @@ set nocompatible
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'https://github.com/scrooloose/nerdtree.git'
+
+Plug 'https://github.com/w0rp/ale.git'
+
+Plug 'bling/vim-airline'
+
 Plug 'https://github.com/pangloss/vim-javascript.git'
 
 Plug 'https://github.com/mxw/vim-jsx.git'
 
-Plug 'https://github.com/neomake/neomake.git'
-
 Plug 'https://github.com/leafgarland/typescript-vim.git'
 
-Plug 'bling/vim-airline'
+Plug 'https://github.com/ianks/vim-tsx.git'
 
-Plug 'https://github.com/scrooloose/nerdtree.git'
+Plug 'https://github.com/fatih/vim-go'
 
 call plug#end()
 
@@ -72,25 +76,22 @@ set smartcase
 
 " }}}
 
-" ================ Neomake ===================={{{
+" ================ Ale ===================={{{
 
-" Eslint neomake
-let g:neomake_jsx_eslint_maker = {
-     \ 'args': ['-f', 'compact'],
-        \ 'errorformat': '%E%f: line %l\, col %c\, Error - %m,' .
-        \ '%W%f: line %l\, col %c\, Warning - %m'
-        \ }
-let g:neomake_jsx_enabled_makers = ['eslint']
-autocmd! BufWritePost,BufEnter *.jsx Neomake
+" Set this. Airline will handle the rest.
+let g:airline#extensions#ale#enabled = 1
 
-let g:neomake_javascript_jshint_maker = {
-    \ 'args': ['--verbose'],
-    \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
-    \ }
-let g:neomake_javascript_enabled_makers = ['eslint']	"javascript uses jshint library
-autocmd! BufWritePost,BufEnter *.js Neomake 			"Only use above for .js files. 
+" Write this in your vimrc file
+let g:ale_lint_on_text_changed = 'never'
 
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'jsx': ['eslint'],
+\   'html': [],
+\   'typescript': ['tslint'],
+\}
+
+let g:ale_echo_msg_format = '[%linter%] %s'
 
 " }}}
-
 
