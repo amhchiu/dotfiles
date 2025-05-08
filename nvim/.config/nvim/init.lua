@@ -10,6 +10,9 @@ vim.opt.softtabstop = 2
 
 vim.opt.foldmethod = 'marker'
 
+-- Load keymaps
+require('keymaps')
+
 -- Load abbreviations
 require('emoji_abbrevs')
 
