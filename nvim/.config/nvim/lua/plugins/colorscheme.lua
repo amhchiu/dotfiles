@@ -16,13 +16,13 @@ return {
     priority = 1000,
     config = function()
       require("catppuccin").setup({
-        flavour = "frappe", -- "latte", "frappe", "macchiato", "mocha"
+        flavour = "mocha", -- "latte", "frappe", "macchiato", "mocha"
+        transparent_background = true,
         custom_highlights = function(colors)
             return {
-                Comment = { fg = "#8FBC8F", italic = true },
+                -- Comment = { fg = "#8FBC8F", italic = true },
             }
         end
-
       })
       vim.cmd.colorscheme "catppuccin"
     end
