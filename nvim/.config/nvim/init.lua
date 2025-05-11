@@ -10,6 +10,8 @@ vim.opt.softtabstop = 2
 
 vim.opt.foldmethod = 'marker'
 
+vim.opt.signcolumn = 'yes'
+
 -- Load keymaps
 require('keymaps')
 
