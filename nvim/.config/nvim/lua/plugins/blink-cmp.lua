@@ -38,7 +38,7 @@ return {
         auto_show = false,
       },
       menu = {
-        auto_show = false,
+        auto_show = true,
       }
     },
     sources = {
