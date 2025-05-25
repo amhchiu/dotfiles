@@ -8,9 +8,11 @@ vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 
-vim.opt.foldmethod = 'marker'
-
 vim.opt.signcolumn = 'yes'
+
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldlevel = 99
 
 -- Load keymaps
 require('keymaps')
