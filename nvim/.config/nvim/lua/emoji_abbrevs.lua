@@ -1,7 +1,7 @@
 vim.cmd([[
-  iabbrev :progress: 🥑
-  iabbrev :done: ✅
-  iabbrev :no: ❌
-  iabbrev :orange: 🍊
+  inoremap :progress: 🥑
+  inoremap :done: ✅
+  inoremap :no: ❌
+  inoremap :orange: 🍊
 ]])
  
