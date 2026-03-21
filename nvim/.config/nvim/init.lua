@@ -1,3 +1,11 @@
+-- Load keymaps
+require('keymaps')
+
+if vim.g.vscode then
+  return
+end
+
+vim.opt.relativenumber = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.title = true
@@ -13,9 +21,6 @@ vim.opt.signcolumn = 'yes'
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldlevel = 99
-
--- Load keymaps
-require('keymaps')
 
 -- Load abbreviations
 require('emoji_abbrevs')
