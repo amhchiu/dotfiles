@@ -1,20 +1,32 @@
--- diagnostics
-vim.keymap.set('n', 'gl', vim.diagnostic.open_float, { desc = 'Diag: Open float' })
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Diag: Prev' })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Diag: Next' })
-
 if vim.g.vscode then
   local vscode = require('vscode')
+
+  -- Folding
   vim.keymap.set('n', 'za', function() vscode.action('editor.toggleFold') end)
   vim.keymap.set('n', 'zc', function() vscode.action('editor.fold') end)
   vim.keymap.set('n', 'zo', function() vscode.action('editor.unfold') end)
   vim.keymap.set('n', 'zM', function() vscode.action('editor.foldAll') end)
   vim.keymap.set('n', 'zR', function() vscode.action('editor.unfoldAll') end)
+
+  -- Diagnostics
+  vim.keymap.set('n', '[d', function() vscode.action('editor.action.marker.prev') end, { desc = 'Diag: Prev' })
+  vim.keymap.set('n', ']d', function() vscode.action('editor.action.marker.next') end, { desc = 'Diag: Next' })
+  vim.keymap.set('n', 'gl', function() vscode.action('editor.action.showHover') end, { desc = 'Diag: Open float/hover' })
+
+  -- Optional: VS Code native equivalents for your fzf and format keymaps
+  vim.keymap.set('n', '<leader>ff', function() vscode.action('workbench.action.quickOpen') end, { desc = 'Find files' })
+  vim.keymap.set('n', '<leader>fg', function() vscode.action('workbench.action.findInFiles') end, { desc = 'Live grep' })
+  vim.keymap.set('n', '<leader>mp', function() vscode.action('editor.action.formatDocument') end, { desc = 'Format file' })
 end
 
 if not vim.g.vscode then
   local map = vim.keymap.set
   local opts = { noremap = true, silent = true }
+
+  -- diagnostics
+  vim.keymap.set('n', 'gl', vim.diagnostic.open_float, { desc = 'Diag: Open float' })
+  vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Diag: Prev' })
+  vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Diag: Next' })
 
   -- fzf-lua: File searching
   map('n', '<leader>ff', '<cmd>lua require("fzf-lua").files()<CR>', opts)
